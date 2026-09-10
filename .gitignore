@@ -18,3 +18,4 @@ __pycache__/
 data/raw/
 data/processed/
 data/database/
+data/chroma_db/
