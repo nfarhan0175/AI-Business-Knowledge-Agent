@@ -1,0 +1,316 @@
+[
+    {
+        "id": 1,
+        "question": "What is Olist?",
+        "answer": "Olist is a Brazilian marketplace technology company that connects small and medium-sized merchants (\"sellers\") to major Brazilian online marketplaces, allowing them to sell products under a single contract instead of registering separately with each channel.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 2
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 5,
+                "chunk": 4
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 3
+            }
+        ],
+        "answer_evaluation": {
+            "matched_keywords": [
+                "marketplace",
+                "Brazil"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 2,
+        "question": "What is the purpose of the Olist marketplace?",
+        "answer": "Based on the provided context, the purpose of Olist is to connect small and medium-sized merchants (\"sellers\") to major Brazilian online marketplaces. This allows sellers to list and sell their products across multiple channels under a single contract instead of having to register separately with each individual marketplace.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 2
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 5,
+                "chunk": 4
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 3
+            }
+        ],
+        "answer_evaluation": {
+            "matched_keywords": [
+                "sellers",
+                "marketplace"
+            ],
+            "keyword_score": 0.67
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 3,
+        "question": "What information is tracked about customers?",
+        "answer": null,
+        "sources": [],
+        "answer_evaluation": null,
+        "retrieval_evaluation": null,
+        "status": "failed",
+        "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+    },
+    {
+        "id": 4,
+        "question": "What information is stored about orders?",
+        "answer": "Based on the provided context, the following information is stored about orders:\n\n* **Central Transaction Record:** Orders serve as the central record of a transaction, tracked through several status stages with timestamps.\n* **Order Status:** The current stage of the order (created, approved, processing, invoiced, shipped, delivered, unavailable, or canceled).\n* **Order Items:** Individual line items within an order, which can include multiple products (potentially from different sellers) and their associated freight value (shipping cost).\n* **Payments:** One or more payment records capturing how and how much was paid, including the payment method, installments, and value.\n* **Estimated Delivery Date:** The delivery date promised to the customer at checkout.\n* **Reviews:** Post-delivery/post-purchase satisfaction ratings (1–5) and optional comments from the customer.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 6,
+                "chunk": 1
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 5
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 4
+            }
+        ],
+        "answer_evaluation": {
+            "matched_keywords": [
+                "order",
+                "status"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 5,
+        "question": "How are payments related to orders?",
+        "answer": "Based on the provided context, payments are related to orders in the following ways:\n\n* **Associated Records:** Each order has one or more associated payment records that capture the payment method, number of installments, and payment value.\n* **Split Payments:** If a customer uses more than one payment method for a single order, the total payment value may be split across multiple payment records.\n* **Order Pipeline Progression:** Payment approval is a required step in the order pipeline (Order Placed → Payment Approved → Processing → Shipped → Delivered → Reviewed). An order generally cannot move into seller processing until its payment has been approved.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 5
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 3,
+                "chunk": 2
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 3,
+                "chunk": 3
+            }
+        ],
+        "answer_evaluation": {
+            "matched_keywords": [
+                "payment",
+                "order"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 6,
+        "question": "What payment methods can customers use?",
+        "answer": "Based on the provided context, customers can use the following payment methods:\n\n* **Credit card** (payments can also be split into installments)\n* **Debit card**\n* **Boleto** (a Brazilian bank-slip method)\n* **Vouchers**",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 5,
+                "chunk": 1
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 3,
+                "chunk": 2
+            }
+        ],
+        "answer_evaluation": {
+            "matched_keywords": [
+                "payment",
+                "credit",
+                "debit"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 7,
+        "question": "What information is tracked about products?",
+        "answer": "Based on the provided context, the following information is tracked about products:\n\n* **Physical attributes:** Weight in grams, and length, height, and width in centimeters (used to calculate shipping/freight cost).\n* **Listing quality fields:** The length of the product name, the length of the product description, and the number of photos included in the listing.\n* **Product category:** The classification of a product (e.g., electronics, toys, furniture) used for browsing and search.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 2,
+                "chunk": 4
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 2,
+                "chunk": 3
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 6,
+                "chunk": 2
+            }
+        ],
+        "answer_evaluation": {
+            "matched_keywords": [
+                "product",
+                "category"
+            ],
+            "keyword_score": 0.67
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 8,
+        "question": "What is the refund policy?",
+        "answer": "Based on the provided context, refunds are generally handled by reporting an issue—such as receiving a wrong item, a damaged item, or experiencing non-delivery—to support. After the issue is reported, the order is reviewed, and a refund or replacement is issued.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 4,
+                "chunk": 7
+            }
+        ],
+        "answer_evaluation": {
+            "matched_keywords": [
+                "refund"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 9,
+        "question": "What happens when an order is cancelled?",
+        "answer": "Based on the provided context, when an order is canceled:\n\n* The order is not completed (it was cancelled at some point in the process).\n* It may have failed at payment, been cancelled by the customer, or become unavailable before shipment.\n* In the dataset, cancelled orders (along with negative review comments) indirectly reflect that a refund or replacement was handled, rather than being tracked in a dedicated refund log.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 4,
+                "chunk": 7
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 2,
+                "chunk": 5
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 3,
+                "chunk": 4
+            }
+        ],
+        "answer_evaluation": {
+            "matched_keywords": [
+                "cancel",
+                "order"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 10,
+        "question": "What information is available about sellers?",
+        "answer": null,
+        "sources": [],
+        "answer_evaluation": null,
+        "retrieval_evaluation": null,
+        "status": "failed",
+        "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 57.927626304s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '57s'}]}}"
+    }
+]

@@ -1,52 +1,43 @@
 import chromadb
 import time
+from pathlib import Path
 from app.rag.embedding import embed_text,embed_texts
-from app.rag.documents import load_product_documents
+from app.rag.documents import load_pdf_documents
 
-# Create persistent Chroma client
-chroma_client = chromadb.PersistentClient(path="data/chroma_db")
-# Create or get collection
-collection = chroma_client.get_or_create_collection(name="business_documents")
+CHROMA_DIR = Path("data/chroma_db")
+COLLECTION_NAME = "olist_business_knowledge"
 BATCH_SIZE = 50
 
-def add_documents_to_chroma():
-    documents = load_product_documents()
-    total_documents = len(documents)
-    print(f"\nTotal documents to process: {total_documents}")
-    processed = 0
+def get_chroma_client():
+    CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    return client
 
-    for start in range(0,total_documents,BATCH_SIZE):
-        end = min(start + BATCH_SIZE, total_documents)
-        batch = documents[start:end]
-        print(f"\nProcessing {start + 1} - {end} of {total_documents}")
+def get_collection():
+    client = get_chroma_client()
+    collection = client.get_or_create_collection(name=COLLECTION_NAME)
+    return collection
 
-        # Prepare batch
-        ids = [document["id"] for document in batch]
-        texts = [document["text"] for document in batch]
-        metadatas = []
-        for document in batch:
-            metadata = document["metadata"].copy()
-            metadata["chunk_index"] = 0
-            metadatas.append(metadata)
+def add_documents(documents,embeddings):
+    collection = get_collection()
+    ids = [doc["id"] for doc in documents]
+    texts = [doc["text"] for doc in documents]
+    metadatas = [doc["metadata"] for doc in documents]
+    
+    collection.upsert(
+        ids=ids,
+        documents=texts,
+        embeddings=embeddings,
+        metadatas=metadatas
+    )
+    print(f"Added {len(documents)} documents to ChromaDB.")
 
-        # Generate embeddings for entire batch
-        embeddings = embed_texts(texts)
-        collection.upsert(
-            ids=ids,
-            documents=texts,
-            embeddings=embeddings,
-            metadatas=metadatas
-        )
-        processed += len(batch)
-        print(f"Saved: {processed}/{total_documents}")
-        # Free tier rate limit protection
-        if end < total_documents:
-            print("Waiting 2 seconds before next batch...")
-            time.sleep(2)
-
-    print("Documents added to Chroma successfully!")
-    print(f"Total processed: {processed}")
-    print(f"Collection count: {collection.count()}")
-
+def get_collection_count():
+    collection = get_collection()
+    return collection.count()
+    
 if __name__ == "__main__":
-    add_documents_to_chroma()
+    collection = get_collection()
+
+    print("Collection:", collection.name)
+    print("Documents stored:", collection.count())

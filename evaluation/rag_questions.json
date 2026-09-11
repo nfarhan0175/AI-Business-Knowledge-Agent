@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "question": "What is Olist?",
+    "expected_keywords": ["marketplace", "Brazil"],
+    "expected_source": "olist_business_guide.pdf"
+  },
+  {
+    "id": 2,
+    "question": "What is the purpose of the Olist marketplace?",
+    "expected_keywords": ["sellers", "customers", "marketplace"],
+    "expected_source": "olist_business_guide.pdf"
+  },
+  {
+    "id": 3,
+    "question": "What information is tracked about customers?",
+    "expected_keywords": ["customer", "location"],
+    "expected_source": "olist_business_guide.pdf"
+  },
+  {
+    "id": 4,
+    "question": "What information is stored about orders?",
+    "expected_keywords": ["order", "status"],
+    "expected_source": "olist_business_guide.pdf"
+  },
+  {
+    "id": 5,
+    "question": "How are payments related to orders?",
+    "expected_keywords": ["payment", "order"],
+    "expected_source": "olist_business_guide.pdf"
+  },
+  {
+    "id": 6,
+    "question": "What payment methods can customers use?",
+    "expected_keywords": ["payment", "credit", "debit"],
+    "expected_source": "olist_business_guide.pdf"
+  },
+  {
+    "id": 7,
+    "question": "What information is tracked about products?",
+    "expected_keywords": ["product", "category", "price"],
+    "expected_source": "olist_business_guide.pdf"
+  },
+  {
+    "id": 8,
+    "question": "What is the refund policy?",
+    "expected_keywords": ["refund"],
+    "expected_source": "olist_business_guide.pdf"
+  },
+  {
+    "id": 9,
+    "question": "What happens when an order is cancelled?",
+    "expected_keywords": ["cancel", "order"],
+    "expected_source": "olist_business_guide.pdf"
+  },
+  {
+    "id": 10,
+    "question": "What information is available about sellers?",
+    "expected_keywords": ["seller"],
+    "expected_source": "olist_business_guide.pdf"
+  }
+]

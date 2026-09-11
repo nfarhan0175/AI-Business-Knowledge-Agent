@@ -8,31 +8,36 @@ api_key = os.getenv("GEMINI_API_KEY")
 
 if not api_key:
     raise ValueError("GEMINI_API_KEY not found in .env file")
-client = genai.Client(api_key=api_key)
 
+client = genai.Client(api_key=api_key)
+MODEL_NAME = "gemini-3.6-flash"
 
 def generate_answer(question, context):
+    """
+    Generate an answer using the user's question
+    and retrieved context.
+    """
+
     prompt = f"""
-Your task is to answer the user's question using 
-ONLY the information provided in the context. 
-Important rules: 
-1. Do not invent facts. 
-2. Do not use outside knowledge. 
-3. If the context does not contain enough information, 
-say that the available product information is not sufficient. 
-4. Keep the answer clear and concise. 
-5. Mention relevant product IDs when appropriate. 
-6. When useful, mention the product category. 
-7. Do not claim that a product belongs to a category unless the context supports it.
+You are an AI business knowledge assistant for Olist.
+Answer the user's question using ONLY the provided context.
+
+If the answer cannot be found in the context,
+say that you could not find the information
+in the available documents.
+
+Do not make up information.
+
 Context:
 {context}
 
 User Question:
 {question}
-Now provide the best answer based only on the retrieved context.
+
+Answer:
 """
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model=MODEL_NAME,
         contents=prompt
     )
     return response.text

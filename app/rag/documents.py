@@ -1,45 +1,35 @@
-import pandas as pd
 from pathlib import Path
+from pypdf import PdfReader
 
-PROCESSED_DIR = Path("data/processed")
+DOCUMENTS_DIR = Path("data/documents")
+PDF_PATH = DOCUMENTS_DIR / "olist_business_guide.pdf"
 
-def load_product_documents():
-    products = pd.read_csv(PROCESSED_DIR / "products.csv")
-    products = products.head(200)
+def load_pdf_documents():
+    if not PDF_PATH.exists():
+        raise FileNotFoundError(f"PDF file not found: {PDF_PATH}")
+    reader = PdfReader(PDF_PATH)
     documents = []
-
-    for _, row in products.iterrows():
-        category = row["product_category_name"]
-        document = f"""
-Product Information
-
-Product ID: {row["product_id"]}
-Category: {category}
-Product Name Length: {row["product_name_lenght"]}
-Product Description Length: {row["product_description_lenght"]}
-Product Photos Quantity: {row["product_photos_qty"]}
-Product Weight: {row["product_weight_g"]} grams
-Product Length: {row["product_length_cm"]} cm
-Product Height: {row["product_height_cm"]} cm
-Product Width: {row["product_width_cm"]} cm
-""".strip()
+    for page_number, page in enumerate(reader.pages, start=1):
+        text = page.extract_text()
+        if not text:
+            continue
+        text = text.strip()
         documents.append({
-            "id": f"product_{row['product_id']}",
-            "text": document,
+            "id": f"pdf_page_{page_number}",
+            "text": text,
             "metadata": {
-                "source": "products",
-                "product_id": row["product_id"],
-                "category": str(category)
+                "source": "olist_business_guide.pdf",
+                "page": page_number
             }
         })
     return documents
 
 if __name__ == "__main__":
-    documents = load_product_documents()
-    print("Total documents:", len(documents))
+    documents = load_pdf_documents()
+    print("Total pages:", len(documents))
+    if documents:
+        print("\nFirst page:")
+        print(documents[0]["text"])
 
-    print("\nFirst document:")
-    print(documents[0]["text"])
-
-    print("\nMetadata:")
-    print(documents[0]["metadata"])
+        print("\nMetadata:")
+        print(documents[0]["metadata"])
