@@ -25,7 +25,7 @@ def ask_question(question, top_k=3):
 
     print("Generating answer...")
     answer = generate_answer(question=question, context=context)
-    return {"answer": answer,"sources": sources}
+    return {"answer": answer, "sources": sources, "context": context}
 
 
 if __name__ == "__main__":

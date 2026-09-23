@@ -4,6 +4,18 @@ from pypdf import PdfReader
 DOCUMENTS_DIR = Path("data/documents")
 PDF_PATH = DOCUMENTS_DIR / "olist_business_guide.pdf"
 
+def clean_pdf_text(text):
+    lines = [line.strip() for line in text.splitlines()]
+    cleaned_lines = []
+    for line in lines:
+        if not line:
+            cleaned_lines.append("")
+            continue
+        cleaned_lines.append(line)
+    text = "\n".join(cleaned_lines)
+    text = " ".join(text.split())
+    return text.strip()
+
 def load_pdf_documents():
     if not PDF_PATH.exists():
         raise FileNotFoundError(f"PDF file not found: {PDF_PATH}")
@@ -13,7 +25,8 @@ def load_pdf_documents():
         text = page.extract_text()
         if not text:
             continue
-        text = text.strip()
+        # text = text.strip()
+        text = clean_pdf_text(text)
         documents.append({
             "id": f"pdf_page_{page_number}",
             "text": text,

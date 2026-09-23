@@ -74,7 +74,8 @@ def run_evaluation():
             # result = ask_question(question, top_k=3)
             answer = result["answer"]
             sources = result["sources"]
-
+            context = result.get("context", "")
+            
             answer_evaluation = evaluate_answer(answer, item["expected_keywords"])
             retrieval_evaluation = evaluate_retrieval(sources, item["expected_source"])
 
@@ -83,6 +84,7 @@ def run_evaluation():
                 "question": question,
                 "answer": answer,
                 "sources": sources,
+                "context": context,
                 "answer_evaluation": answer_evaluation,
                 "retrieval_evaluation": retrieval_evaluation,
                 "status": "success"

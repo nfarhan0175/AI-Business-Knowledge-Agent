@@ -1,0 +1,17 @@
+{
+    "total_questions": 10,
+    "successful_questions": 9,
+    "failed_questions": 1,
+    "answer_evaluation": {
+        "evaluated_questions": 9,
+        "average_keyword_score": 0.74
+    },
+    "retrieval_evaluation": {
+        "evaluated_questions": 9,
+        "successful_retrievals": 9,
+        "retrieval_success_rate": 1.0
+    },
+    "failed_question_ids": [
+        10
+    ]
+}

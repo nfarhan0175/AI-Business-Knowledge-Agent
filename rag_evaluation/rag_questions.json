@@ -13,8 +13,8 @@
   },
   {
     "id": 3,
-    "question": "What information is tracked about customers?",
-    "expected_keywords": ["customer", "location"],
+    "question": "What is Olist's annual profit in 2025?",
+    "expected_keywords": ["annual profit", "2025"],
     "expected_source": "olist_business_guide.pdf"
   },
   {
@@ -37,8 +37,8 @@
   },
   {
     "id": 7,
-    "question": "What information is tracked about products?",
-    "expected_keywords": ["product", "category", "price"],
+    "question": "Who is the current CEO of Olist?",
+    "expected_keywords": ["CEO", "2026"],
     "expected_source": "olist_business_guide.pdf"
   },
   {

@@ -1,0 +1,355 @@
+[
+    {
+        "id": 1,
+        "question": "What is Olist?",
+        "answer": "Olist is a Brazilian marketplace technology company that connects small and medium-sized merchants (\"sellers\") to major Brazilian online marketplaces. It allows sellers to sell products under a single contract instead of registering separately with each channel. Olist does not sell products directly; independent sellers own the inventory and fulfill orders themselves.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 2
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 5,
+                "chunk": 4
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 3
+            }
+        ],
+        "context": "1. Platform Overview Olist is a Brazilian marketplace technology company that connects small and medium-sized merchants (\"sellers\") to major Brazilian online marketplaces, allowing them to sell products under a single contract instead of registering separately with each channel. Sellers list their products through Olist, and once a customer places an order, the seller is notified and ships the product directly to the customer using Olist's logistics partners.\n\nQ: What happens after a customer places an order? A: Payment is submitted for approval; once approved, the order moves to processing, then shipping, then delivery, followed by the satisfaction survey. Q: Does Olist sell products directly? A: No — Olist is a marketplace connecting independent sellers to customers; sellers own the inventory and fulfill orders themselves. Q: What does the \"unavailable\" order status mean? A: The order could not be fulfilled, typically due to a stock or availability issue on the seller's side. Q: What geographic information is available?\n\nSellers list their products through Olist, and once a customer places an order, the seller is notified and ships the product directly to the customer using Olist's logistics partners. This dataset reflects real, anonymized commercial orders placed between 2016 and 2018 , covering the full journey of an order — from purchase, to payment, to shipping, to delivery, and finally to the customer's post-purchase satisfaction survey. Core entities in the dataset: ● Customers — buyers identified by a customer ID and location (city, state, zip code prefix).",
+        "answer_evaluation": {
+            "matched_keywords": [
+                "marketplace",
+                "Brazil"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 2,
+        "question": "What is the purpose of the Olist marketplace?",
+        "answer": "Based on the provided context, the purpose of Olist is to connect small and medium-sized merchants (\"sellers\") to major Brazilian online marketplaces, allowing them to sell their products under a single contract instead of registering separately with each individual channel.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 2
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 5,
+                "chunk": 4
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 1
+            }
+        ],
+        "context": "1. Platform Overview Olist is a Brazilian marketplace technology company that connects small and medium-sized merchants (\"sellers\") to major Brazilian online marketplaces, allowing them to sell products under a single contract instead of registering separately with each channel. Sellers list their products through Olist, and once a customer places an order, the seller is notified and ships the product directly to the customer using Olist's logistics partners.\n\nQ: What happens after a customer places an order? A: Payment is submitted for approval; once approved, the order moves to processing, then shipping, then delivery, followed by the satisfaction survey. Q: Does Olist sell products directly? A: No — Olist is a marketplace connecting independent sellers to customers; sellers own the inventory and fulfill orders themselves. Q: What does the \"unavailable\" order status mean? A: The order could not be fulfilled, typically due to a stock or availability issue on the seller's side. Q: What geographic information is available?\n\nOlist E-Commerce Knowledge Guide Reference document for the Olist Brazilian E-Commerce dataset (2016–2018) This guide describes how the Olist marketplace works, what the dataset contains, and how customers, sellers, products, orders, payments, and reviews relate to one another. It is meant to answer descriptive, \"how does this work\" style questions. Exact numbers, totals, and statistics (revenue, order counts, averages, etc.) should be answered from the structured dataset/database directly, not from this document. 1.",
+        "answer_evaluation": {
+            "matched_keywords": [
+                "sellers",
+                "marketplace"
+            ],
+            "keyword_score": 0.67
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 3,
+        "question": "What is Olist's annual profit in 2025?",
+        "answer": "I could not find the information in the available documents.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 2
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 5,
+                "chunk": 4
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 3
+            }
+        ],
+        "context": "1. Platform Overview Olist is a Brazilian marketplace technology company that connects small and medium-sized merchants (\"sellers\") to major Brazilian online marketplaces, allowing them to sell products under a single contract instead of registering separately with each channel. Sellers list their products through Olist, and once a customer places an order, the seller is notified and ships the product directly to the customer using Olist's logistics partners.\n\nQ: What happens after a customer places an order? A: Payment is submitted for approval; once approved, the order moves to processing, then shipping, then delivery, followed by the satisfaction survey. Q: Does Olist sell products directly? A: No — Olist is a marketplace connecting independent sellers to customers; sellers own the inventory and fulfill orders themselves. Q: What does the \"unavailable\" order status mean? A: The order could not be fulfilled, typically due to a stock or availability issue on the seller's side. Q: What geographic information is available?\n\nSellers list their products through Olist, and once a customer places an order, the seller is notified and ships the product directly to the customer using Olist's logistics partners. This dataset reflects real, anonymized commercial orders placed between 2016 and 2018 , covering the full journey of an order — from purchase, to payment, to shipping, to delivery, and finally to the customer's post-purchase satisfaction survey. Core entities in the dataset: ● Customers — buyers identified by a customer ID and location (city, state, zip code prefix).",
+        "answer_evaluation": {
+            "matched_keywords": [],
+            "keyword_score": 0.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 4,
+        "question": "What information is stored about orders?",
+        "answer": "Based on the provided context, the following information is stored about orders:\n\n* **Timestamps and Status Flags (Order Status):** Traces left at each stage of an order, capturing its current stage (created, approved, processing, invoiced, shipped, delivered, unavailable, canceled).\n* **Order Items:** Individual line items within an order (including multiple products and potentially different sellers).\n* **Payments:** Information on how and how much was paid for an order, capturing the payment method, installments, and value.\n* **Estimated Delivery Date:** The delivery date promised to the customer at checkout.\n* **Freight Value:** The shipping cost associated with an order item.\n* **Reviews / Review Score:** Post-purchase/post-delivery satisfaction ratings (1–5) and optional comments submitted by the customer.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 6,
+                "chunk": 1
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 6
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 5
+            }
+        ],
+        "context": "record of how and how much was paid for an order, including method and installments. Review — A post-delivery satisfaction rating (1–5) and optional comment from the customer. Order status — The current stage of an order (created, approved, processing, invoiced, shipped, delivered, unavailable, canceled). Estimated delivery date — The delivery date promised to the customer at checkout. Freight value — The shipping cost associated with an order item. Boleto — A Brazilian bank-slip payment method requiring an extra confirmation step. Product category — The classification of a product (e.g., electronics, toys, furniture) used for browsing and search.\n\nAn order can be understood as a pipeline: Order Placed → Payment Approved → Processing → Shipped → Delivered → Reviewed. Each stage leaves a trace in the data (timestamps, status flags, and eventually a review score), which is how order experience and delays can be analyzed. 2. Product Catalog and Categories\n\n● Order items — individual line items within an order (an order can contain multiple products, potentially from different sellers). ● Payments — one or more payment records per order, capturing method, installments, and value. ● Reviews — post-purchase satisfaction ratings and comments submitted by customers. ● Geolocation — latitude/longitude data linked to Brazilian zip code prefixes, used for mapping customer and seller locations. An order can be understood as a pipeline: Order Placed → Payment Approved → Processing → Shipped → Delivered → Reviewed.",
+        "answer_evaluation": {
+            "matched_keywords": [
+                "order",
+                "status"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 5,
+        "question": "How are payments related to orders?",
+        "answer": "Based on the provided context, payments are related to orders in the following ways:\n\n* **Associated Records:** Each order has one or more associated payment records.\n* **Payment Details:** A payment record captures how and how much was paid for an order, including the payment method (e.g., credit card, boleto, debit card), installments, and total value.\n* **Order Pipeline Stage:** \"Payment Approved\" represents a crucial stage in the order pipeline, occurring after an order is placed and before it moves to processing, shipping, delivery, and review.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 5
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 3,
+                "chunk": 2
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 6,
+                "chunk": 1
+            }
+        ],
+        "context": "● Order items — individual line items within an order (an order can contain multiple products, potentially from different sellers). ● Payments — one or more payment records per order, capturing method, installments, and value. ● Reviews — post-purchase satisfaction ratings and comments submitted by customers. ● Geolocation — latitude/longitude data linked to Brazilian zip code prefixes, used for mapping customer and seller locations. An order can be understood as a pipeline: Order Placed → Payment Approved → Processing → Shipped → Delivered → Reviewed.\n\n4. Payments Each order has one or more associated payment records. Recorded payment types include: ● Credit card ( credit_card ) — the most commonly used method, often paid in installments. ● Boleto ( boleto ) — a Brazilian bank-slip payment method where the customer pays at a bank, lottery outlet, or online banking portal; confirmation can take longer than card payments since it depends on the customer completing the payment step. ● Debit card ( debit_card ) — processed similarly to credit card but drawn directly from available funds.\n\nrecord of how and how much was paid for an order, including method and installments. Review — A post-delivery satisfaction rating (1–5) and optional comment from the customer. Order status — The current stage of an order (created, approved, processing, invoiced, shipped, delivered, unavailable, canceled). Estimated delivery date — The delivery date promised to the customer at checkout. Freight value — The shipping cost associated with an order item. Boleto — A Brazilian bank-slip payment method requiring an extra confirmation step. Product category — The classification of a product (e.g., electronics, toys, furniture) used for browsing and search.",
+        "answer_evaluation": {
+            "matched_keywords": [
+                "payment",
+                "order"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 6,
+        "question": "What payment methods can customers use?",
+        "answer": "Based on the provided context, customers can use the following payment methods:\n\n* **Credit card** (which can also be split into installments)\n* **Debit card**\n* **Boleto** (a Brazilian bank-slip payment method)\n* **Vouchers**",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 5,
+                "chunk": 1
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 3,
+                "chunk": 2
+            }
+        ],
+        "context": "Q: What payment methods can customers use? A: Credit card, debit card, boleto (a Brazilian bank-slip method), and vouchers; credit card payments can also be split into installments. Q: Why do some payments take longer to confirm? A: Boleto payments require the customer to complete an extra step (e.g., paying at a bank), so confirmation is slower than with card payments. Q: How is customer satisfaction measured? A: Through a post-delivery review survey, where the customer gives a score from 1 to 5 and can leave a comment. Q: What usually causes a low review score?\n\n4. Payments Each order has one or more associated payment records. Recorded payment types include: ● Credit card ( credit_card ) — the most commonly used method, often paid in installments. ● Boleto ( boleto ) — a Brazilian bank-slip payment method where the customer pays at a bank, lottery outlet, or online banking portal; confirmation can take longer than card payments since it depends on the customer completing the payment step. ● Debit card ( debit_card ) — processed similarly to credit card but drawn directly from available funds.",
+        "answer_evaluation": {
+            "matched_keywords": [
+                "payment",
+                "credit",
+                "debit"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 7,
+        "question": "Who is the current CEO of Olist?",
+        "answer": "I could not find the information in the available documents.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 2
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 5,
+                "chunk": 4
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 1,
+                "chunk": 3
+            }
+        ],
+        "context": "1. Platform Overview Olist is a Brazilian marketplace technology company that connects small and medium-sized merchants (\"sellers\") to major Brazilian online marketplaces, allowing them to sell products under a single contract instead of registering separately with each channel. Sellers list their products through Olist, and once a customer places an order, the seller is notified and ships the product directly to the customer using Olist's logistics partners.\n\nQ: What happens after a customer places an order? A: Payment is submitted for approval; once approved, the order moves to processing, then shipping, then delivery, followed by the satisfaction survey. Q: Does Olist sell products directly? A: No — Olist is a marketplace connecting independent sellers to customers; sellers own the inventory and fulfill orders themselves. Q: What does the \"unavailable\" order status mean? A: The order could not be fulfilled, typically due to a stock or availability issue on the seller's side. Q: What geographic information is available?\n\nSellers list their products through Olist, and once a customer places an order, the seller is notified and ships the product directly to the customer using Olist's logistics partners. This dataset reflects real, anonymized commercial orders placed between 2016 and 2018 , covering the full journey of an order — from purchase, to payment, to shipping, to delivery, and finally to the customer's post-purchase satisfaction survey. Core entities in the dataset: ● Customers — buyers identified by a customer ID and location (city, state, zip code prefix).",
+        "answer_evaluation": {
+            "matched_keywords": [],
+            "keyword_score": 0.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 8,
+        "question": "What is the refund policy?",
+        "answer": "Based on the provided documents, refunds are generally handled by reporting an issue (such as a wrong item, damaged item, or non-delivery) to support. After the issue is reported, the order is reviewed, and a refund or replacement is issued. \n\nNote that the dataset reflects this process indirectly through cancelled orders and negative review comments rather than through a dedicated refund log.",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 4,
+                "chunk": 7
+            }
+        ],
+        "context": "Q: Can I get a refund? A: Refunds are generally handled by reporting an issue (wrong item, damaged item, or non-delivery) to support, after which the order is reviewed and a refund or replacement is issued. The dataset reflects this indirectly through cancelled orders and negative review comments rather than a dedicated refund log. Q: What does it mean when an order status is \"canceled\"? A: The order was not completed — it may have failed at payment, been cancelled by the customer, or become unavailable before shipment.",
+        "answer_evaluation": {
+            "matched_keywords": [
+                "refund"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 9,
+        "question": "What happens when an order is cancelled?",
+        "answer": "Based on the provided documents, when an order is cancelled:\n\n* The order is not completed—it may have failed at payment, been cancelled by the customer, or become unavailable before shipment.\n* It means the order was cancelled at some point in the process, indicating the transaction did not complete as originally planned.\n* In the dataset, an order marked as cancelled indirectly reflects refund-and-return activity (rather than being recorded in a dedicated refund log or table).",
+        "sources": [
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 4,
+                "chunk": 7
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 2,
+                "chunk": 5
+            },
+            {
+                "source": "olist_business_guide.pdf",
+                "page": 4,
+                "chunk": 1
+            }
+        ],
+        "context": "Q: Can I get a refund? A: Refunds are generally handled by reporting an issue (wrong item, damaged item, or non-delivery) to support, after which the order is reviewed and a refund or replacement is issued. The dataset reflects this indirectly through cancelled orders and negative review comments rather than a dedicated refund log. Q: What does it mean when an order status is \"canceled\"? A: The order was not completed — it may have failed at payment, been cancelled by the customer, or become unavailable before shipment.\n\n3. Order Lifecycle and Status Every order moves through a defined set of statuses as it progresses: Status Meaning created Order has been placed but payment has not yet been confirmed. approved Payment has been approved/confirmed. processing Seller has been notified and is preparing the order. invoiced An invoice has been issued for the order. shipped The order has been handed off to a logistics carrier. delivered The order has reached the customer. unavailable The order could not be fulfilled (e.g., stock issue). canceled The order was cancelled at some point in the process.\n\nThe dataset does not contain a dedicated \"returns\" or \"refund request\" table. Refund-and-return activity is instead reflected indirectly through: ● Order status — an order marked canceled or unavailable indicates the transaction did not complete as originally planned. ● Review scores and comments — customers frequently describe issues such as receiving the wrong item, a damaged product, or a very late delivery in their review text, which is the closest signal to a complaint or dissatisfaction event in the data.",
+        "answer_evaluation": {
+            "matched_keywords": [
+                "cancel",
+                "order"
+            ],
+            "keyword_score": 1.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf",
+                "olist_business_guide.pdf"
+            ],
+            "source_found": true
+        },
+        "status": "success"
+    },
+    {
+        "id": 10,
+        "question": "What information is available about sellers?",
+        "answer": null,
+        "sources": [],
+        "context": null,
+        "answer_evaluation": {
+            "matched_keywords": [],
+            "keyword_score": 0.0
+        },
+        "retrieval_evaluation": {
+            "expected_source": "olist_business_guide.pdf",
+            "retrieved_sources": [],
+            "source_found": false
+        },
+        "status": "failed"
+    }
+]

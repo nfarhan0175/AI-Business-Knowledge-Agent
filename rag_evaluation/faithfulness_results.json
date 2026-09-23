@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "question": "What is Olist?",
+        "grounded": true,
+        "score": 1.0,
+        "explanation": "Every statement in the generated answer is directly supported by the retrieved context.",
+        "status": "success"
+    },
+    {
+        "id": 2,
+        "question": "What is the purpose of the Olist marketplace?",
+        "grounded": true,
+        "score": 1.0,
+        "explanation": "The generated answer is fully supported by the retrieved context, which explicitly states that Olist connects small and medium-sized merchants to major Brazilian online marketplaces under a single contract.",
+        "status": "success"
+    },
+    {
+        "id": 3,
+        "question": "What is Olist's annual profit in 2025?",
+        "grounded": true,
+        "score": 1.0,
+        "explanation": "The generated answer correctly states that the requested information about Olist's annual profit in 2025 cannot be found in the provided context.",
+        "status": "success"
+    },
+    {
+        "id": 4,
+        "question": "What information is stored about orders?",
+        "grounded": true,
+        "score": 1.0,
+        "explanation": "The answer is fully supported by the retrieved context. All listed items, including status flags/timestamps, order items, payment details, estimated delivery date, freight value, and reviews, are directly stated in the context.",
+        "status": "success"
+    },
+    {
+        "id": 5,
+        "question": "How are payments related to orders?",
+        "grounded": true,
+        "score": 1.0,
+        "explanation": "The generated answer is fully supported by the retrieved context. All statements regarding payment records, payment details, types of payment, and the position of 'Payment Approved' within the order pipeline directly align with the provided text.",
+        "status": "success"
+    },
+    {
+        "id": 6,
+        "question": "What payment methods can customers use?",
+        "grounded": true,
+        "score": 1.0,
+        "explanation": "The generated answer correctly lists all payment methods mentioned in the context (credit card, debit card, boleto, and vouchers) along with the detail about credit card installments, making it fully supported.",
+        "status": "success"
+    },
+    {
+        "id": 7,
+        "question": "Who is the current CEO of Olist?",
+        "grounded": true,
+        "score": 1.0,
+        "explanation": "The retrieved context does not contain information about the current CEO of Olist, so stating that the information could not be found is accurate and fully grounded.",
+        "status": "success"
+    },
+    {
+        "id": 8,
+        "question": "What is the refund policy?",
+        "grounded": true,
+        "score": 1.0,
+        "explanation": "The answer is fully supported by the retrieved context. Every detail mentioned in the generated response directly matches the information provided in the context.",
+        "status": "success"
+    },
+    {
+        "id": 9,
+        "question": "What happens when an order is cancelled?",
+        "grounded": true,
+        "score": 1.0,
+        "explanation": "The generated answer is fully supported by the retrieved context. All three points accurately reflect statements provided in the context regarding what happens and what it means when an order is cancelled.",
+        "status": "success"
+    }
+]
