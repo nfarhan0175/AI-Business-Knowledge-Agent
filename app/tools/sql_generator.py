@@ -3,15 +3,7 @@ import json
 from dotenv import load_dotenv
 from google import genai
 from app.tools.schemas import get_database_schema
-
-load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
-
-if not api_key:
-    raise ValueError("GEMINI_API_KEY not found")
-
-client = genai.Client(api_key=api_key)
-MODEL_NAME = "gemini-2.5-flash"
+from app.config import client, MODEL_NAME
 
 def clean_sql(text):
     text = text.strip()
@@ -71,11 +63,6 @@ Return ONLY the SQL query.
         model=MODEL_NAME,
         contents=prompt
     )
-    sql = response.text.strip()
-    if sql.startswith("```"):
-        sql = sql.replace("```sql", "")
-        sql = sql.replace("```", "")
-        sql = sql.strip()
     sql = clean_sql(response.text)
     return sql
 

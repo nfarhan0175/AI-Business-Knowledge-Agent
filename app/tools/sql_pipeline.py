@@ -7,14 +7,13 @@ def ask_database(question):
     print("\nGenerated SQL:")
     print(sql)
     result = execute_query(sql)
-    answer = generate_answer(question, sql, result)
+    # answer = generate_answer(question, sql, result)
     return {
         "question": question,
         "sql": sql,
         "result": result,
-        "answer": answer
+        # "answer": answer
     }
-
 
 if __name__ == "__main__":
     question = "What is the total revenue?"
@@ -24,4 +23,4 @@ if __name__ == "__main__":
     print(f"question: '{response['question']}',")
     print(f"sql: '{response['sql']}',")
     print(f"result: {response['result']},")
-    print(f"answer: {response['answer']}")
+    # print(f"answer: {response['answer']}")
