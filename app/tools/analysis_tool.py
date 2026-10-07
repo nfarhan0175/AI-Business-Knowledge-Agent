@@ -88,7 +88,7 @@ def run_analysis(question):
         "success": True,
         "question": question,
         "sql": sql,
-        "data": df
+        "data": df.to_dict(orient="records")
     }
 
 # Step 10: Final Analysis Pipeline

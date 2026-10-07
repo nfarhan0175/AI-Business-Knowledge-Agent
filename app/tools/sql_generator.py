@@ -1,7 +1,3 @@
-import os
-import json
-from dotenv import load_dotenv
-from google import genai
 from app.tools.schemas import get_database_schema
 from app.config import client, MODEL_NAME
 
@@ -66,6 +62,45 @@ Return ONLY the SQL query.
     sql = clean_sql(response.text)
     return sql
 
+def correct_sql(question, failed_sql, error_message):
+    schema = get_database_schema()
+    schema_text = format_schema(schema)
+    prompt = f"""
+You are a SQL debugging assistant for an e-commerce SQLite database.
+DATABASE SCHEMA:
+{schema_text}
+
+USER QUESTION:
+{question}
+
+FAILED SQL:
+{failed_sql}
+
+SQL ERROR:
+{error_message}
+
+Your task is to correct the SQL query.
+Rules:
+1. Return ONLY the corrected SQLite SELECT query.
+2. Do not explain anything.
+3. Use only tables and columns from the schema.
+4. Do not modify the database.
+5. Only SELECT queries are allowed.
+6. Make sure the SQL is syntactically valid SQLite.
+7. Preserve the original intention of the user's question.
+8. Check JOINs, GROUP BY, aliases, CTEs, parentheses and functions carefully.
+9. Do not introduce tables or columns that do not exist.
+10. Do not add INSERT, UPDATE, DELETE, DROP, ALTER,
+    CREATE, REPLACE, or TRUNCATE.Return ONLY the corrected SQL query.
+"""
+    response = client.models.generate_content(
+        model=MODEL_NAME,
+        contents=prompt
+    )
+
+    corrected_sql = clean_sql(response.text)
+
+    return corrected_sql
 
 if __name__ == "__main__":
     question = "What are the top 5 product categories by revenue?"

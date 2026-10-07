@@ -1,18 +1,25 @@
-from app.tools.sql_generator import generate_sql
+from app.tools.sql_generator import generate_sql, correct_sql
 from app.tools.sql_tool import execute_query
 from app.tools.sql_answer import generate_answer
 
-def ask_database(question):
-    sql = generate_sql(question)
+def ask_database(question, failed_sql=None, sql_error=None):
+    if failed_sql is None:
+        sql = generate_sql(question)
+    else:
+        print("\nCorrecting failed SQL...")
+        sql = correct_sql(
+            question=question,
+            failed_sql=failed_sql,
+            error_message=sql_error
+        )
     print("\nGenerated SQL:")
     print(sql)
     result = execute_query(sql)
-    # answer = generate_answer(question, sql, result)
+
     return {
         "question": question,
         "sql": sql,
-        "result": result,
-        # "answer": answer
+        "result": result
     }
 
 if __name__ == "__main__":

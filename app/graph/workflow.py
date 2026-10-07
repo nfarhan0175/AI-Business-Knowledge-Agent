@@ -1,50 +1,12 @@
-from typing import TypedDict
+from app.graph.state import AgentState
 from langgraph.graph import StateGraph, START, END
+from langgraph.checkpoint.memory import MemorySaver
+from app.graph.memory import rewrite_question_with_memory
+from langchain_core.messages import HumanMessage, AIMessage
+from app.graph.nodes import (router_node, sql_node, analysis_node, 
+    rag_node, retry_node, error_node)
 
-from app.tools.tool_router import select_tool
-from app.tools.sql_pipeline import ask_database
-from app.tools.analysis_tool import run_analysis
-from app.rag.rag_pipeline import ask_question
 
-class AgentState(TypedDict):
-    question: str
-    selected_tool: str
-    tool_result: dict
-    final_answer: str
-
-# Router Node
-def router_node(state: AgentState):
-    question = state["question"]
-    print("\n--- Router Node ---")
-    print("Question:", question)
-    result = select_tool(question)
-    return {
-        "selected_tool": result.get("tool", ""),
-        "tool_result": result
-    }
-
-# SQL Node
-def sql_node(state: AgentState):
-    question = state["question"]
-    print("\n--- SQL Node ---")
-    result = ask_database(question)
-    return {"tool_result": result}
-
-# Analysis Node
-def analysis_node(state: AgentState):
-    question = state["question"]
-    print("\n--- Analysis Node ---")
-    result = run_analysis(question)
-    return {"tool_result": result}
-
-# RAG Node
-def rag_node(state: AgentState):
-    question = state["question"]
-    print("\n--- RAG Node ---")
-    result = ask_question(question)
-    return {"tool_result": result}
-
-# Conditional Router
 def route_after_router(state: AgentState):
     selected_tool = state["selected_tool"]
     if selected_tool == "sql_tool":
@@ -52,24 +14,38 @@ def route_after_router(state: AgentState):
     elif selected_tool == "analysis_tool":
         return "analysis"
     elif selected_tool == "rag_tool":
-       return "rag"
+        return "rag"
     else:
-        raise ValueError(f"Unknown tool selected: {selected_tool}")
+        return "error"
 
-# Formatter Node
-def formatter_node(state: AgentState):
-    print("\n--- Formatter Node ---")
-    tool = state["selected_tool"]
-    result = state["tool_result"]
+def route_after_tool(state: AgentState):
+    if not state["error"]:
+        return "formatter"
+    if state["retry_count"] < 2:
+        return "retry"
+    return "error"
 
-    # SQL
+def route_after_retry(state: AgentState):
+    selected_tool = state["selected_tool"]
+    if selected_tool == "sql_tool":
+        return "sql"
+    elif selected_tool == "analysis_tool":
+        return "analysis"
+    elif selected_tool == "rag_tool":
+        return "rag"
+    else:
+        return "error"
+
+# FORMATTER NODE
+def formatter_node(state):
+    tool = state.get("selected_tool")
+    result = state.get("tool_result", {})
+    # SQL TOOL
     if tool == "sql_tool":
         sql_result = result.get("result", {})
         if not sql_result.get("success"):
-            final_answer = (
-                f"SQL query failed: "
-                f"{sql_result.get('error', 'Unknown error')}"
-            )
+            error_message = sql_result.get("error", "Unknown SQL error")
+            final_answer = (f"SQL query failed: {error_message}")
         else:
             columns = sql_result.get("columns", [])
             rows = sql_result.get("rows", [])
@@ -77,55 +53,52 @@ def formatter_node(state: AgentState):
                 final_answer = "No matching records were found."
             elif len(rows) == 1 and len(rows[0]) == 1:
                 value = rows[0][0]
-                # Format numeric values
                 if isinstance(value, float):
                     value = round(value, 2)
-                final_answer = f"{columns[0]}: {value}"
+                final_answer = (f"{columns[0]}: {value}")
             else:
                 final_answer = str({
                     "columns": columns,
                     "rows": rows
                 })
-    # Analysis
+    # ANALYSIS TOOL
     elif tool == "analysis_tool":
         if not result.get("success"):
-            final_answer = (
-                f"Analysis failed: "
-                f"{result.get('error', 'Unknown error')}"
-            )
+            error_message = result.get("error", "Unknown analysis error")
+            final_answer = (f"Analysis failed: {error_message}")
         else:
             data = result.get("data")
             if data is None:
-                final_answer = (
-                    "Analysis completed, "
-                    "but no data was returned."
-                )
+                final_answer = "Analysis completed, but no data was returned."
             else:
-                final_answer = data.to_string(index=False)
-    # RAG
+                final_answer = str(data)
+    # RAG TOOL
     elif tool == "rag_tool":
-        if not result.get("answer"):
-            final_answer = (
-                "I could not generate an answer from "
-                "the available documents."
-            )
-        else:
-            final_answer = result["answer"]
-    # Unknown tool
+        final_answer = result.get("answer", "No answer was generated.")
+    # UNKNOWN TOOL
     else:
-        final_answer = ("I could not determine how to answer the question.")
-    return {"final_answer": final_answer}
-# Build Graph
+        final_answer = ("I could not determine which tool should answer this question.")
+    return {
+        "final_answer": final_answer,
+        "messages": [
+            HumanMessage(content=state["original_question"]),
+            AIMessage(content=final_answer)
+        ]
+    }
+
 graph_builder = StateGraph(AgentState)
 
+graph_builder.add_node("memory", rewrite_question_with_memory)
 graph_builder.add_node("router", router_node)
 graph_builder.add_node("sql", sql_node)
 graph_builder.add_node("analysis", analysis_node)
 graph_builder.add_node("rag", rag_node)
+graph_builder.add_node("retry", retry_node)
 graph_builder.add_node("formatter", formatter_node)
+graph_builder.add_node("error", error_node)
 
-
-graph_builder.add_edge(START, "router")
+graph_builder.add_edge(START, "memory")
+graph_builder.add_edge("memory", "router")
 graph_builder.add_conditional_edges(
     "router",
     route_after_router,
@@ -133,24 +106,63 @@ graph_builder.add_conditional_edges(
         "sql": "sql",
         "analysis": "analysis",
         "rag": "rag",
+        "error": "error"
     }
 )
 
-graph_builder.add_edge("sql", "formatter")
-graph_builder.add_edge("analysis", "formatter")
-graph_builder.add_edge("rag", "formatter")
-graph_builder.add_edge("formatter", END)
+def add_tool(node_name):
+    graph_builder.add_conditional_edges(
+        node_name,
+        route_after_tool,
+        {
+            "formatter": "formatter",
+            "retry": "retry",
+            "error": "error"
+        }
+    )
 
-graph = graph_builder.compile()
+graph_builder.add_conditional_edges(
+    "retry",
+    route_after_retry,
+    {
+        "sql": "sql",
+        "analysis": "analysis",
+        "rag": "rag",
+        "error": "error"
+    }
+)
+add_tool("sql")
+add_tool("analysis")
+add_tool("rag")
+graph_builder.add_edge("formatter",END)
+graph_builder.add_edge("error", END)
+# graph = graph_builder.compile()
+memory = MemorySaver()
+graph = graph_builder.compile(checkpointer=memory)
 
-# Test
+# TEST
 if __name__ == "__main__":
+  for _ in range(3):  
     initial_state = {
-        "question": "What is the revenue growth by month?",
+        # "question":
+        #     "How can i get refund?",
+        #     "What is the revenue growth over the month?",
+        #     "What are the top 5 product categories by revenue?",
+        #     "What about their percentages?",
+        "question": input("Enter your question: "),
+        "original_question": "",
+        "messages": [],
         "selected_tool": "",
         "tool_result": {},
-        "final_answer": ""
+        "final_answer": "",
+        "error": "",
+        "retry_count": 0
     }
-    result = graph.invoke(initial_state)
+    config = {"configurable": {"thread_id": "user_1"}}
+    result = graph.invoke(initial_state, config=config)
     print("FINAL ANSWER")
     print(result["final_answer"])
+    print("RETRY COUNT")
+    print(result["retry_count"])
+    # print("GRAPH")
+    # print(graph.get_graph().draw_mermaid())
